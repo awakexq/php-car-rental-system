@@ -4,12 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
+    return Inertia::render('main');
+})->name('main');
 
-Route::get('normal', function () {
-    return Inertia::render('normal');
-})->name('normal');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {

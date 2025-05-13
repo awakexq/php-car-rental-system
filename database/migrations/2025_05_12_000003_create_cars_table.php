@@ -20,6 +20,9 @@ return new class extends Migration
             $table->boolean('dostepny')->default(true);
             $table->string('typ', 32);
             $table->string('rodzaj', 32);
+            $table->integer('drzwi');
+            $table->integer('pasazerowie');
+            $table->integer('ocena');
             $table->timestamps();
 
         });

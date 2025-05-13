@@ -7,7 +7,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/League_Spartan/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+  }
 @theme {
+    --font-league-spartan: "League Spartan", "sans-serif";
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
@@ -57,16 +64,45 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+    --color-primary:#06A6D2;
+    --color-muted:#505050;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@utility headline-1 {
+    @apply text-[36px] font-league-spartan font-semibold;
+  }
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+  @utility headline-1-2 {
+    @apply text-[36px] font-league-spartan font-medium;
+  }
+
+  @utility headline-2 {
+    @apply text-[20px] font-league-spartan font-medium;
+  }
+
+  @utility text-1 {
+    @apply text-[30px] font-league-spartan;
+  }
+
+  @utility text-2 {
+    @apply text-[22px] font-league-spartan;
+  }
+
+  @utility text-3 {
+    @apply text-[20px] font-league-spartan;
+  }
+
+  @utility text-4 {
+    @apply text-[16px] font-league-spartan;
+  }
+
+  @utility text-5 {
+    @apply text-[12px] font-league-spartan;
+  }
+
+  @utility text-4-1 {
+    @apply text-[16px] font-league-spartan font-medium;
+  }
 @layer base {
     *,
     ::after,
