@@ -20,14 +20,14 @@ export default function Navbar() {
 
             {/* Menu desktop */}
             <div className='hidden md:flex items-center gap-4 lg:gap-18'>
-                <h1 className='text-3 text-black hover:cursor-pointer'>Aktualna oferta</h1>
-                <h1 className='text-3 text-black hover:cursor-pointer'>Jak wynająć?</h1>
-                <h1 className='text-3 text-black hover:cursor-pointer'>Promocje</h1>
+                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Aktualna oferta</h1>
+                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Jak wynająć?</h1>
+                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Promocje</h1>
             </div>
             
             <div className='hidden md:flex items-center gap-4'>
-                <h1 className='text-3 text-black hover:cursor-pointer'>Zarejestruj się</h1>
-                <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/90 hover:cursor-pointer transition-colors'>
+                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Zarejestruj się</h1>
+                <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors'>
                     <h1 className='text-3'>Logowanie</h1>
                 </button>
             </div>
@@ -37,11 +37,11 @@ export default function Navbar() {
         {isMenuOpen && (
             <div className='absolute top-20 left-0 w-full bg-white shadow-lg md:hidden'>
                 <div className='flex flex-col p-4 space-y-4'>
-                    <h1 className='text-3 text-black hover:cursor-pointer'>Aktualna oferta</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer'>Jak wynająć?</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer'>Promocje</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer'>Zarejestruj się</h1>
-                    <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/90 hover:cursor-pointer transition-colors w-full'>
+                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Aktualna oferta</h1>
+                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Jak wynająć?</h1>
+                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Promocje</h1>
+                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Zarejestruj się</h1>
+                    <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors w-full'>
                         <h1 className='text-3'>Logowanie</h1>
                     </button>
                 </div>
