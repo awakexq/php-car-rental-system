@@ -23,7 +23,7 @@ export default function hero() {
                 <img
                     src="/Car-right.png"
                     alt="auto"
-                    className="w-full h-full object-cover max-w-[1200px] scale-175"
+                    className="w-full h-full object-cover max-w-[1200px] scale-150"
                 />
             </div>
         </div>

@@ -4,7 +4,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <section className='flex justify-center items-center h-10 w-full mt-10 px-4'>
+    <section className='flex justify-center items-center h-16 w-full px-4 bg-white pt-12'>
         <div className='flex justify-between items-center w-full max-w-6xl'>
             <h1 className='text-3 text-primary font-bold md:ml-0 ml-auto mr-auto md:mr-0'>RENT<span className='text-black'>CAR</span></h1>
             

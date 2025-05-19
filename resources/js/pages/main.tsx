@@ -2,14 +2,15 @@ import Navbar from '@/components/navbar'
 import Hero from '@/components/hero'
 import React from 'react'
 import Steps from '@/components/steps'
-import { Slider } from '@/components/slider'
+import Choice from '@/components/choice'
 export default function main() {
   return (
-    <div>
+    <div className="min-h-screen bg-white">
       <Navbar /> 
       <Hero />
       <Steps />
-      <Slider/>
+      <Choice />
     </div>
   )
 }
+

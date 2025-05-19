@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Steps() {
   return (
-    <div className="text-center mt-20 mb-30">
+    <div className="text-center pt-15 pb-30">
       <h2 className="headline-1">Jak <span className="text-sky-500">wynająć</span>?</h2>
       <div className="text-muted mb-10 text-2">Wypożycz pojazd w paru krokach</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto justify-items-center px-0">
