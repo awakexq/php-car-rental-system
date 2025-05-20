@@ -6,7 +6,9 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @custom-variant dark (&:is(.dark *));
-
+body {
+    font-family: 'League Spartan', sans-serif;
+}
 @font-face {
     font-family: 'League Spartan';
     src: url('/League_Spartan/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations');
@@ -72,7 +74,7 @@
     @apply text-[36px] font-league-spartan font-semibold;
   }
 
-  @utility headline-1-2 {
+@utility headline-1-2 {
     @apply text-[36px] font-league-spartan font-medium;
   }
 
@@ -103,6 +105,7 @@
   @utility text-4-1 {
     @apply text-[16px] font-league-spartan font-medium;
   }
+
 @layer base {
     *,
     ::after,

@@ -5,7 +5,7 @@ export default function hero() {
     <section className='w-full mt-5'>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto h-150 items-center">
             <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left">
-                <h1 className='text-4xl sm:text-3xl md:text-4xl leading-tight headline-1'>
+                <h1 className='text-4xl sm:text-3xl md:text-4xl leading-tight headline-1 mt-4'>
                     Wynajmij
                     idealny <span className='text-primary'>Samochód </span>
                     <br/>
@@ -23,7 +23,7 @@ export default function hero() {
                 <img
                     src="/Car-right.png"
                     alt="auto"
-                    className="w-full h-full object-cover max-w-[1200px] scale-150"
+                    className="w-full h-full object-cover sm:max-w-[1200[px] max-w-[800px] sm:scale-170 pr-10 scale-130"
                 />
             </div>
         </div>
