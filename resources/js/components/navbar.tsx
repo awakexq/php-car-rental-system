@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className='flex justify-between items-center w-full max-w-6xl'>
             <h1 className='text-3 text-primary font-bold md:ml-0 ml-auto mr-auto md:mr-0'>RENT<span className='text-black'>CAR</span></h1>
             
-            {/* Menu mobilne */}
+        
             <button 
                 className='md:hidden'
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -18,29 +18,27 @@ export default function Navbar() {
                 </svg>
             </button>
 
-            {/* Menu desktop */}
             <div className='hidden md:flex items-center gap-4 lg:gap-18'>
-                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Aktualna oferta</h1>
-                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Jak wynająć?</h1>
-                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Promocje</h1>
+                <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Aktualna oferta</h1>
+                <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Jak wynająć?</h1>
+                <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Promocje</h1>
             </div>
             
             <div className='hidden md:flex items-center gap-4'>
-                <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Zarejestruj się</h1>
+                <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</h1>
                 <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors'>
                     <h1 className='text-3'>Logowanie</h1>
                 </button>
             </div>
         </div>
-
-        {/* Menu mobilne*/}
+ 
         {isMenuOpen && (
             <div className='absolute top-20 left-0 w-full bg-white shadow-lg md:hidden'>
                 <div className='flex flex-col p-4 space-y-4'>
-                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Aktualna oferta</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Jak wynająć?</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Promocje</h1>
-                    <h1 className='text-3 text-black hover:cursor-pointer hover:text-primary'>Zarejestruj się</h1>
+                    <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Aktualna oferta</h1>
+                    <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Jak wynająć?</h1>
+                    <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Promocje</h1>
+                    <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</h1>
                     <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors w-full'>
                         <h1 className='text-3'>Logowanie</h1>
                     </button>
