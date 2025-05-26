@@ -15,9 +15,9 @@ export default function hero() {
                     Wynajmij auto z dostawą do 500 km! Działamy w Częstochowie dostarczając samochód pod wskazany adres. 
                     Nowoczesna flota, łatwa rezerwacja online i pełen komfort jazdy. Zarezerwuj teraz i ruszaj w drogę!
                 </p>
-                <button className="mt-6 px-6 py-3 bg-primary hover:cursor-pointer text-white rounded-md font-semibold text-base hover:bg-primary/60 transition-colors">
+                <a href="/currentoffer" className="mt-6 px-6 py-3 bg-primary hover:cursor-pointer text-white rounded-md font-semibold text-3 hover:bg-primary/60 transition-colors">
                     Zobacz ofertę
-                </button>
+                </a>
             </div>
             <div className="flex justify-center md:justify-end">
                 <img

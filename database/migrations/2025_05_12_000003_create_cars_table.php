@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id('id_samochodu');
-            $table->string('zdjecie', 255);
+            $table->json('zdjecia')->nullable();
             $table->string('marka', 64);
             $table->string('model', 64);
             $table->integer('ilosc_koni');
@@ -22,12 +22,12 @@ return new class extends Migration
             $table->string('rodzaj', 32);
             $table->integer('drzwi');
             $table->integer('pasazerowie');
-            $table->integer('ocena');
+            $table->integer('ocena')->nullable();
+            $table->integer('ilosc_ocen')->nullable();
             $table->timestamps();
 
         });
     }
-
     public function down(): void
     {
         Schema::dropIfExists('cars');
