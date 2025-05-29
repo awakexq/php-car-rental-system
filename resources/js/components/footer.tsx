@@ -20,15 +20,25 @@ export default function Footer() {
 
         <div className="mb-10 md:mb-0">
           <div className="font-semibold text-4 mb-5">Oferta</div>
-          <div className="mb-2 cursor-pointer text-4 hover:text-primary">Aktualne auta</div>
-          <div className="mb-2 cursor-pointer text-4 hover:text-primary">Konto na stronie</div>
+          <div className="mb-2 cursor-pointer text-4 hover:text-primary">
+            <a href="/currentoffer">Aktualne auta</a>
+          </div>
+          <div className="mb-2 cursor-pointer text-4 hover:text-primary">
+            <a href="/account">Konto na stronie</a>
+          </div>
         </div>
 
         <div className="mb-10 md:mb-0">
           <div className="font-semibold text-4 mb-5">Informacje</div>
-          <div className="mb-2 cursor-pointer text-4 hover:text-primary">Jak wynająć?</div>
-          <div className="mb-2 cursor-pointer text-4 hover:text-primary">Regulamin</div>
-          <a href="/terms" className="cursor-pointer text-4 hover:text-primary">Warunki wynajmu</a>
+          <div className="mb-2 cursor-pointer text-4 hover:text-primary">
+            <a href="/#jak-wynajac">Jak wynająć?</a>
+          </div>
+          <div className="mb-2 cursor-pointer text-4 hover:text-primary">
+            <a href="/terms">Regulamin</a>
+          </div>
+          <div className="mb-2 cursor-pointer text-4 hover:text-primary">
+            <a href="/terms">Warunki wynajmu</a>
+          </div>
         </div>
 
         <div>

@@ -30,6 +30,14 @@ Route::get('/add-car', function () {
     return Inertia::render('add-car');
 })->name('add-car');
 
+Route::get('/loginpage', function () {
+    return Inertia::render('loginpage');
+})->name('loginpage');
+
+Route::get('/registerpage', function () {
+    return Inertia::render('registerpage');
+})->name('registerpage');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');

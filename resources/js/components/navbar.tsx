@@ -36,10 +36,10 @@ export default function Navbar() {
             </div>
             
             <div className='hidden md:flex items-center gap-4'>
-                <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</h1>
-                <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors'>
+                <a href="/registerpage" className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</a>
+                <a href="/loginpage" className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors'>
                     <h1 className='text-3'>Logowanie</h1>
-                </button>
+                </a>
             </div>
         </div>
  
@@ -49,10 +49,10 @@ export default function Navbar() {
                     <a href="/currentoffer" className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Aktualna oferta</a>
                     <button onClick={handleScrollToSection} className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer text-left'>Jak wynająć?</button>
                     <a href="/terms" className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Warunki wynajmu</a>    
-                    <h1 className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</h1>
-                    <button className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors w-full'>
+                    <a href="/registerpage" className='text-3 text-black hover:text-primary relative after:content-[""] after:absolute after:w-full after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 cursor-pointer'>Zarejestruj się</a>
+                    <a href="/loginpage" className='bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/60 hover:cursor-pointer transition-colors w-full'>
                         <h1 className='text-3'>Logowanie</h1>
-                    </button>
+                    </a>
                 </div>
             </div>
         )}
