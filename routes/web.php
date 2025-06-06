@@ -38,6 +38,10 @@ Route::get('/registerpage', function () {
     return Inertia::render('registerpage');
 })->name('registerpage');
 
+Route::get('/account', function () {
+    return Inertia::render('account');
+})->name('account');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
