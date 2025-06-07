@@ -1,9 +1,26 @@
-import React from 'react';
+import { useForm } from '@inertiajs/react';
+import React, { FormEventHandler } from 'react';
+
+type LoginForm = {
+    email: string;
+    password: string;
+    remember: boolean;
+};
 
 export default function Login() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const { data, setData, post, processing, errors, reset } = useForm<Required<LoginForm>>({
+    email: '',
+    password: '',
+    remember: false,
+});
+
+const submit: FormEventHandler = (e) => {
     e.preventDefault();
-  };
+    post(route('login'), {
+        onFinish: () => reset('password'),
+    });
+};
+  
 
   return (
     <div className="flex h-screen w-screen">
@@ -20,11 +37,14 @@ export default function Login() {
             <p className="text-muted text-3">Wpisz swoje dane aby się zalogować</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
+          <form onSubmit={submit} className="space-y-6" autoComplete="off">
             <div>
               <input
                 type="email"
                 name="email"
+                value={data.email}
+                onChange={(e) => setData('email', e.target.value)}
+                disabled={processing}
                 placeholder="E-mail @"
                 className="w-full p-4 text-lg border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                 autoComplete="off"
@@ -34,27 +54,15 @@ export default function Login() {
             <div>
               <input
                 type="password"
-                name="password"
+                name="password" 
+                value={data.password}
+                onChange={(e) => setData('password', e.target.value)}
+                disabled={processing}
                 placeholder="Hasło"
                 className="w-full p-4 text-lg border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                 autoComplete="new-password"
               />
             </div>
-
-            <div className="flex justify-between items-center">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="remember"
-                  className="mr-2 w-5 h-5 text-primary border-gray-300 focus:ring-primary rounded"
-                />
-                <span className="text-base text-gray-600">Zapamiętaj mnie</span>
-              </label>
-              <a href="#" className="text-base text-primary hover:text-primary/80">
-                Nie pamiętasz hasła?
-              </a>
-            </div>
-
             <button
               type="submit"
               className="w-full bg-primary text-white py-4 px-6 rounded-xl text-lg font-semibold hover:bg-primary/60 transition-colors cursor-pointer"

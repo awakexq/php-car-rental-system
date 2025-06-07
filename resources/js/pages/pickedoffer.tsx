@@ -81,7 +81,7 @@ export default function pickedoffer(props: {car: Car}) {
 
                   <div className="text-center pt-4">
                     <a 
-                      href="/terms" 
+                      href="/login" 
                       className="bg-primary hover:bg-primary/60 text-white rounded-lg px-8 py-4 font-semibold  text-lg inline-block  w-full sm:w-auto"
                     >
                       Wypożycz teraz →

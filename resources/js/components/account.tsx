@@ -1,11 +1,44 @@
 import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible'
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
 
 export default function Account() {
   const [ustawieniaKonta, setUstawieniaKonta] = useState(false)
   const [preferencje, setPreferencje] = useState(false)
   const [bezpieczenstwo, setBezpieczenstwo] = useState(false)
+  const [passwordForm, setPasswordForm] = useState({
+    current_password: '',
+    password: '',
+    password_confirmation: ''
+  })
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    try {
+      await axios.put('/password', passwordForm)
+      toast.success('Hasło zostało zmienione pomyślnie')
+      setPasswordForm({
+        current_password: '',
+        password: '',
+        password_confirmation: ''
+      })
+    } catch (error: any) {
+      if (error.response?.data?.errors) {
+        Object.values(error.response.data.errors).forEach((error: any) => {
+          toast.error(error[0])
+        })
+      } else {
+        toast.error('Wystąpił błąd podczas zmiany hasła')
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <section className="w-full py-12 px-4">
@@ -87,7 +120,7 @@ export default function Account() {
               <CollapsibleTrigger className="w-full">
                 <CardHeader className="cursor-pointer">
                   <CardTitle className="flex items-center justify-between text-left">
-                    <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-4">
                       <span className="text-2xl">⚙️</span>
                       <span className="text-xl">Ustawienia konta</span>
                     </div>
@@ -103,7 +136,7 @@ export default function Account() {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <CardContent>
-                  <div className="space-y-6">
+                  <div className="space-y-6 mt-4">
                     <Card className="border border-gray-200">
                       <Collapsible open={bezpieczenstwo} onOpenChange={setBezpieczenstwo}>
                         <CollapsibleTrigger className="w-full">
@@ -128,26 +161,36 @@ export default function Account() {
                             <div className="space-y-4">
                               <div>
                                 <h4 className="font-semibold mb-4 mt-4">Zmień hasło</h4>
-                                <div className="space-y-4">
+                                <form onSubmit={handlePasswordChange} className="space-y-4">
                                   <input
                                     type="password"
                                     placeholder="Obecne hasło"
                                     className="w-full p-3 border rounded-lg"
+                                    value={passwordForm.current_password}
+                                    onChange={(e) => setPasswordForm({...passwordForm, current_password: e.target.value})}
                                   />
                                   <input
                                     type="password"
                                     placeholder="Nowe hasło"
                                     className="w-full p-3 border rounded-lg"
+                                    value={passwordForm.password}
+                                    onChange={(e) => setPasswordForm({...passwordForm, password: e.target.value})}
                                   />
                                   <input
                                     type="password"
                                     placeholder="Potwierdź nowe hasło"
                                     className="w-full p-3 border rounded-lg"
+                                    value={passwordForm.password_confirmation}
+                                    onChange={(e) => setPasswordForm({...passwordForm, password_confirmation: e.target.value})}
                                   />
-                                  <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/60 transition-colors cursor-pointer">
-                                    Zmień hasło
+                                  <button 
+                                    type="submit" 
+                                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/60 transition-colors cursor-pointer disabled:opacity-50"
+                                    disabled={isLoading}
+                                  >
+                                    {isLoading ? 'Zmieniam hasło...' : 'Zmień hasło'}
                                   </button>
-                                </div>
+                                </form>
                               </div>
                               <div className="pt-4 border-t">
                                 <h4 className="font-semibold mb-4">Weryfikacja dwuetapowa</h4>
@@ -206,16 +249,6 @@ export default function Account() {
                         </CollapsibleContent>
                       </Collapsible>
                     </Card>
-
-                    <div className="pt-6 border-t">
-                      <h4 className="font-semibold text-red-600 mb-4">Usuń konto</h4>
-                      <p className="text-4 text-muted mb-4 font-medium">
-                        Uwaga: Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną permanentnie usunięte.
-                      </p>
-                      <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors cursor-pointer">
-                        Usuń konto
-                      </button>
-                    </div>
                   </div>
                 </CardContent>
               </CollapsibleContent>
