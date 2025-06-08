@@ -5,9 +5,8 @@ import Steps from '@/components/steps'
 import Choice from '@/components/choice'
 import Bestsellercarsection from '@/components/bestsellercarsection'
 import Footer from '@/components/footer'
-import { Car } from '@/types/Car'
 
-export default function main(props: {cars: Car[]}) {
+export default function Main() {
   useEffect(() => {
     if (window.location.hash === '#jak-wynajac') {
       setTimeout(() => {
@@ -25,7 +24,7 @@ export default function main(props: {cars: Car[]}) {
       <Hero />
       <Steps />
       <Choice />
-      <Bestsellercarsection cars={props.cars} />
+      <Bestsellercarsection />
       <Footer />
       <div className="h-8 bg-white"></div>
     </div>

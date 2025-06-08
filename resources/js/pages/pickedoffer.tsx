@@ -2,7 +2,7 @@ import { Car } from '@/types/Car'
 import React, { useState } from 'react'
 import Navbar from '../components/navbar'
 
-export default function pickedoffer(props: {car: Car}) {
+export default function PickedOffer(props: {car: Car}) {
   const [selectedImage, setSelectedImage] = useState(0)
 
   return (

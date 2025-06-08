@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Bestsellercar from './bestsellercar'
 import { Car } from '@/types/Car'
+import axios from 'axios'
 
-export default function bestsellercarsection(props: {cars: Car[]}) {
+export default function BestsellerCarSection() {
+  const [cars, setCars] = useState<Car[]>([])
+
+  useEffect(() => {
+    const fetchBestsellers = async () => {
+      try {
+        const response = await axios.get<Car[]>('/api/cars/bestsellers')
+        setCars(response.data)
+      } catch (error) {
+        console.error('Error fetching bestsellers:', error)
+      }
+    }
+
+    fetchBestsellers()
+  }, [])
+
   return (
     <div>
       <div className="mb-8 text-center md:text-left md:pl-60 pb-10">
@@ -19,7 +35,7 @@ export default function bestsellercarsection(props: {cars: Car[]}) {
         </a>
       </div>
       <div className="flex flex-wrap justify-center pb-25 gap-30">
-        {props.cars.slice(0, 4).map((car) => (
+        {cars.map((car) => (
           <Bestsellercar key={car.id_samochodu} car={car} />
         ))}
       </div>

@@ -12,12 +12,60 @@ class CarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $cars = Car::all();
-        return response()->json($cars);
+        $query = Car::query();
         
+        
+        if ($request->has('marka')) {
+            $query->where('marka', 'like', '%' . $request->marka . '%');
+        }
+        
+        
+        if ($request->has('model')) {
+            $query->where('model', 'like', '%' . $request->model . '%');
+        }
+        
+       
+        if ($request->has('min_cena')) {
+            $query->where('cena_za_dzien', '>=', $request->min_cena);
+        }
+        if ($request->has('max_cena')) {
+            $query->where('cena_za_dzien', '<=', $request->max_cena);
+        }
+        
+        
+        if ($request->has('min_rok')) {
+            $query->where('rocznik', '>=', $request->min_rok);
+        }
+        if ($request->has('max_rok')) {
+            $query->where('rocznik', '<=', $request->max_rok);
+        }
+        
+        
+        if ($request->has('min_konie')) {
+            $query->where('ilosc_koni', '>=', $request->min_konie);
+        }
+        if ($request->has('max_konie')) {
+            $query->where('ilosc_koni', '<=', $request->max_konie);
+        }
+        
+        
+        if ($request->has('typ')) {
+            $query->where('typ', $request->typ);
+        }
+        
+        
+        if ($request->has('rodzaj')) {
+            $query->where('rodzaj', $request->rodzaj);
+        }
+
+        $perPage = $request->query('per_page', 4);
+        $cars = $query->paginate($perPage);
+        
+        return response()->json($cars);
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -89,5 +137,11 @@ class CarController extends Controller
         }
         $car->delete();
         return response()->json(['message' => 'Car deleted successfully']);
+    }
+
+    public function getBestsellers(): JsonResponse
+    {
+        $cars = Car::take(3)->get();
+        return response()->json($cars);
     }
 }

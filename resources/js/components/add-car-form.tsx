@@ -38,9 +38,8 @@ export default function AddCarForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.getAttribute('content') || ''
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       })
 
       if (response.ok) {
@@ -62,17 +61,17 @@ export default function AddCarForm() {
           ilosc_ocen: 0
         })
       } else {
-        const error = await response.json()
-        setMessage({ type: 'error', text: error.message || 'Błąd podczas dodawania auta' })
+        const errorData = await response.json()
+        setMessage({ type: 'error', text: errorData.message || 'Błąd podczas dodawania auta' })
       }
-    } catch (error) {
+    } catch (error: unknown) {
       setMessage({ type: 'error', text: 'Błąd połączenia z serwerem' })
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleInputChange = (field: keyof CarFormData, value: any) => {
+  const handleInputChange = (field: keyof CarFormData, value: string | number | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 

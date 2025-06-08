@@ -27,10 +27,12 @@ export default function Account() {
         password: '',
         password_confirmation: ''
       })
-    } catch (error: any) {
-      if (error.response?.data?.errors) {
-        Object.values(error.response.data.errors).forEach((error: any) => {
-          toast.error(error[0])
+    } catch (error: unknown) {
+      if ((error as any).response?.data?.errors) {
+        Object.values((error as any).response.data.errors).forEach((errorMsg: unknown) => {
+          if (Array.isArray(errorMsg) && errorMsg.length > 0) {
+            toast.error(errorMsg[0])
+          }
         })
       } else {
         toast.error('Wystąpił błąd podczas zmiany hasła')

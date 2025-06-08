@@ -2,7 +2,7 @@ import React from 'react'
 import { Car } from '../types/Car'
 export default function offer(props: {car: Car}) {
   return (
-    <div className="flex flex-col lg:flex-row bg-white rounded-md border-0.5 mt-6 border-gray-200 shadow-sm p-6 sm:p-6 items-center max-w-screen-xl mx-auto">
+    <div className="flex flex-col lg:flex-row bg-white rounded-md border-0.5 pt-6 border-gray-200 shadow-sm p-6 sm:p-6 items-center max-w-screen-xl mx-auto">
       <img
         src={props.car.zdjecia?.[0] || 'https://via.placeholder.com/150'}
         alt={props.car.marka + ' ' + props.car.model}
@@ -27,9 +27,14 @@ export default function offer(props: {car: Car}) {
             {props.car.pasazerowie} Pasażerów
           </span>
         </div>
-        <span className="flex items-center text-4">
-          <span className="text-yellow-400 mr-1">★</span>
-          {props.car.ocena} <span className="text-muted text-4 ml-1">({props.car.ilosc_ocen} ocen)</span>
+        <span className="flex flex-col text-4">
+          <span className="flex items-center">
+            <span className="text-yellow-400 mr-1">★</span>
+            {props.car.ocena} <span className="text-muted text-4 ml-1">({props.car.ilosc_ocen} ocen)</span>
+          </span>
+          <span className="mt-1 text-primary">
+            {props.car.cena_za_dzien} zł/dzień
+          </span>
         </span>
         <a href={`/currentoffer/${props.car.id_samochodu}`} className="bg-primary hover:bg-primary/60 text-white rounded-md px-6 sm:px-8 py-2 sm:py-3 font-semibold transition text-sm sm:text-base w-full sm:w-auto hover:cursor-pointer">
           Wynajmij →
