@@ -36,5 +36,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('account');
 });
 
+Route::get('/wypozycz/{car}', function (Car $car) {
+    return Inertia::render('RentCar', [
+        'car' => $car
+    ]);
+})->middleware(['auth'])->name('rent.car');
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

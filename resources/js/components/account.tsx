@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import UserRentals from './UserRentals'
 
 export default function Account() {
   const [ustawieniaKonta, setUstawieniaKonta] = useState(false)
@@ -44,6 +45,7 @@ export default function Account() {
 
   return (
     <section className="w-full py-12 px-4">
+      
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="headline-1 font-bold">
@@ -53,70 +55,8 @@ export default function Account() {
             Witaj w panelu twojego konta
           </p>
         </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="bg-white shadow-md">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <span className="text-2xl">🚗</span>
-                <span className="text-xl">Wynajem samochodów</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <p className="text-muted">
-                  Wypożyczaj samochody szybko i wygodnie. Szeroki wybór pojazdów dostępny od ręki.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Szybka rezerwacja online</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Odbiór w dogodnej lokalizacji</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Pełne ubezpieczenie w cenie</span>
-                  </li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white shadow-md">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <span className="text-2xl">💎</span>
-                <span className="text-xl">Korzyści</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-5">
-                <p className="text-muted ">
-                  Korzystaj z dodatkowych przywilejów jako nasz klient.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Rabaty na kolejne wynajmy</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Pierwszeństwo rezerwacji</span>
-                  </li> 
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span>
-                    <span className="font-medium">Dedykowana obsługa klienta</span>
-                  </li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-8">
+        <UserRentals />
+        <div className="mt-8 mb-8">
           <Card className="overflow-hidden">
             <Collapsible open={ustawieniaKonta} onOpenChange={setUstawieniaKonta}>
               <CollapsibleTrigger className="w-full">
@@ -257,6 +197,69 @@ export default function Account() {
             </Collapsible>
           </Card>
         </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="bg-white shadow-md">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <span className="text-2xl">🚗</span>
+                <span className="text-xl">Wynajem samochodów</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <p className="text-muted">
+                  Wypożyczaj samochody szybko i wygodnie. Szeroki wybór pojazdów dostępny od ręki.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Szybka rezerwacja online</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Odbiór w dogodnej lokalizacji</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Pełne ubezpieczenie w cenie</span>
+                  </li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white shadow-md">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <span className="text-2xl">💎</span>
+                <span className="text-xl">Korzyści</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-5">
+                <p className="text-muted ">
+                  Korzystaj z dodatkowych przywilejów jako nasz klient.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Rabaty na kolejne wynajmy</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Pierwszeństwo rezerwacji</span>
+                  </li> 
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span className="font-medium">Dedykowana obsługa klienta</span>
+                  </li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        
 
         <div className="grid md:grid-cols-3 gap-6 mt-6">
           <Card className="bg-white shadow-md">

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
@@ -12,7 +13,6 @@ class Car extends Model
     protected $primaryKey = 'id_samochodu';
 
     protected $fillable = [
-        'zdjecia',
         'marka',
         'model',
         'ilosc_koni',
@@ -25,25 +25,24 @@ class Car extends Model
         'drzwi',
         'pasazerowie',
         'ocena',
-        'ilosc_ocen'
+        'ilosc_ocen',
+        'zdjecia'
     ];
 
     protected $casts = [
         'zdjecia' => 'array',
         'dostepny' => 'boolean',
-        'cena_za_dzien' => 'decimal:2',
-        'rocznik' => 'integer',
         'ilosc_koni' => 'integer',
+        'rocznik' => 'integer',
+        'cena_za_dzien' => 'decimal:2',
         'drzwi' => 'integer',
         'pasazerowie' => 'integer',
         'ocena' => 'integer',
-        'ilosc_ocen' => 'integer',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'ilosc_ocen' => 'integer'
     ];
 
-    public function rentals()
+    public function rentals(): HasMany
     {
-        return $this->hasMany(Rental::class, 'id_samochodu');
+        return $this->hasMany(Rental::class, 'car_id', 'id_samochodu');
     }
 }

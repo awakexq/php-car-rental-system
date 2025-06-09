@@ -1,6 +1,7 @@
 import { Car } from '@/types/Car'
 import React, { useState } from 'react'
 import Navbar from '../components/navbar'
+import { Link } from '@inertiajs/react'
 
 export default function PickedOffer(props: {car: Car}) {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -80,12 +81,12 @@ export default function PickedOffer(props: {car: Car}) {
                   </div>
 
                   <div className="text-center pt-4">
-                    <a 
-                      href="/login" 
-                      className="bg-primary hover:bg-primary/60 text-white rounded-lg px-8 py-4 font-semibold  text-lg inline-block  w-full sm:w-auto"
+                    <Link 
+                      href={`/wypozycz/${props.car.id_samochodu}`}
+                      className="bg-primary hover:bg-primary/60 text-white rounded-lg px-8 py-4 font-semibold text-lg inline-block w-full sm:w-auto"
                     >
                       Wypożycz teraz →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
