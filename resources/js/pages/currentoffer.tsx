@@ -45,7 +45,7 @@ export default function CurrentOffer() {
         setCars(response.data.data)
         setTotalPages(response.data.last_page)
       } catch (error) {
-        console.error('Error fetching cars:', error)
+        console.error('Blad podczas pobierania samochodów:', error)
       }
     }
 

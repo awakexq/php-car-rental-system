@@ -27,6 +27,10 @@ Route::middleware(['auth'])->group(function () {
         }
         return Inertia::render('add-car');
     })->name('add-car');
+
+    Route::get('/rentals', function () {
+        return Inertia::render('rentals');
+    })->name('rentals');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

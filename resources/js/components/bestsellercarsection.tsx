@@ -12,7 +12,7 @@ export default function BestsellerCarSection() {
         const response = await axios.get<Car[]>('/api/cars/bestsellers')
         setCars(response.data)
       } catch (error) {
-        console.error('Error fetching bestsellers:', error)
+        console.error('Blad podczas pobierania najpopularniejszych samochodów:', error)
       }
     }
 

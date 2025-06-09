@@ -34,7 +34,19 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
   }
 
   const handleReset = () => {
-    setFilters({})
+    const emptyFilters: FilterParams = {
+      marka: undefined,
+      model: undefined,
+      min_cena: undefined,
+      max_cena: undefined,
+      min_rok: undefined,
+      max_rok: undefined,
+      typ: undefined,
+      rodzaj: undefined,
+      min_konie: undefined,
+      max_konie: undefined
+    }
+    setFilters(emptyFilters)
     onReset()
   }
 
@@ -83,7 +95,10 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
 
             <div className="space-y-2">
               <Label>Typ</Label>
-              <Select value={filters.typ} onValueChange={(value) => handleFilterChange('typ', value)}>
+              <Select 
+                value={filters.typ || ''} 
+                onValueChange={(value) => handleFilterChange('typ', value)}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Wybierz typ" />
                 </SelectTrigger>
@@ -101,7 +116,10 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
 
             <div className="space-y-2">
               <Label>Rodzaj paliwa</Label>
-              <Select value={filters.rodzaj} onValueChange={(value) => handleFilterChange('rodzaj', value)}>
+              <Select 
+                value={filters.rodzaj || ''} 
+                onValueChange={(value) => handleFilterChange('rodzaj', value)}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Wybierz rodzaj" />
                 </SelectTrigger>
@@ -122,14 +140,14 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
                   type="number"
                   min="0"
                   value={filters.min_cena || ''}
-                  onChange={(e) => handleFilterChange('min_cena', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('min_cena', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Od"
                 />
                 <Input
                   type="number"
                   min="0"
                   value={filters.max_cena || ''}
-                  onChange={(e) => handleFilterChange('max_cena', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('max_cena', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Do"
                 />
               </div>
@@ -140,14 +158,16 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
               <div className="flex gap-2">
                 <Input
                   type="number"
+                  min="0"
                   value={filters.min_rok || ''}
-                  onChange={(e) => handleFilterChange('min_rok', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('min_rok', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Od"
                 />
                 <Input
                   type="number"
+                  min="0"
                   value={filters.max_rok || ''}
-                  onChange={(e) => handleFilterChange('max_rok', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('max_rok', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Do"
                 />
               </div>
@@ -160,14 +180,14 @@ export default function Filters({ onFilterChange, onReset }: FiltersProps) {
                   type="number"
                   min="0"
                   value={filters.min_konie || ''}
-                  onChange={(e) => handleFilterChange('min_konie', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('min_konie', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Od"
                 />
                 <Input
                   type="number"
                   min="0"
                   value={filters.max_konie || ''}
-                  onChange={(e) => handleFilterChange('max_konie', e.target.value ? Number(e.target.value) : undefined)}
+                  onChange={(e) => handleFilterChange('max_konie', e.target.value ? Math.max(0, Number(e.target.value)) : undefined)}
                   placeholder="Do"
                 />
               </div>

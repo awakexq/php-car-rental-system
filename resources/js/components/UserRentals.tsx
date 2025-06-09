@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Link } from '@inertiajs/react';
 
 interface Car {
     id_samochodu: number;
@@ -16,7 +17,6 @@ interface Rental {
     rental_start: string;
     rental_end: string;
     total_price: number;
-    status: 'pending' | 'active' | 'completed' | 'cancelled';
     notes?: string;
 }
 
@@ -59,38 +59,8 @@ export default function UserRentals() {
         fetchRentals();
     }, []);
 
-    const getStatusBadgeColor = (status: Rental['status']) => {
-        switch (status) {
-            case 'pending':
-                return 'bg-yellow-100 text-yellow-800';
-            case 'active':
-                return 'bg-green-100 text-green-800';
-            case 'completed':
-                return 'bg-blue-100 text-blue-800';
-            case 'cancelled':
-                return 'bg-red-100 text-red-800';
-            default:
-                return 'bg-gray-100 text-gray-800';
-        }
-    };
-
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleDateString('pl-PL');
-    };
-
-    const getStatusText = (status: Rental['status']) => {
-        switch (status) {
-            case 'pending':
-                return 'Oczekujące';
-            case 'active':
-                return 'Aktywne';
-            case 'completed':
-                return 'Zakończone';
-            case 'cancelled':
-                return 'Anulowane';
-            default:
-                return status;
-        }
     };
 
     if (loading) {
@@ -123,7 +93,9 @@ export default function UserRentals() {
         );
     }
 
-    const recentRentals = rentals.slice(0, 4);
+    const recentRentals = rentals
+        .sort((a, b) => new Date(b.rental_start).getTime() - new Date(a.rental_start).getTime())
+        .slice(0, 4);
 
     return (
         <Card className="mb-6">
@@ -134,36 +106,41 @@ export default function UserRentals() {
                         <span>Ostatnie wypożyczenia</span>
                     </div>
                     {rentals.length > 3 && (
-                        <a href="/rentals" className="text-sm text-primary hover:underline">
+                        <Link 
+                            href="/rentals" 
+                            className="text-sm text-primary hover:underline"
+                        >
                             Zobacz wszystkie →
-                        </a>
+                        </Link>
                     )}
                 </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
                 <div className="space-y-3">
-                    {recentRentals.map((rental) => (
-                        <div key={rental.id} className="flex items-center justify-between py-2 border-b last:border-0">
-                            <div className="flex items-center gap-3">
+                    {recentRentals.map((rental, index) => (
+                        <div key={rental.id} className="flex items-center justify-between py-3 border-b last:border-0">
+                            <div className="flex items-center gap-4">
                                 <img
                                     src={rental.car?.zdjecia?.[0] || '/placeholder.jpg'}
                                     alt={rental.car ? `${rental.car.marka} ${rental.car.model}` : 'Samochód niedostępny'}
-                                    className="w-12 h-12 object-cover rounded"
+                                    className="w-16 h-16 object-cover rounded-md"
                                 />
                                 <div>
-                                    <h4 className="font-medium text-sm">
+                                    <h4 className="font-medium text-base">
                                         {rental.car ? `${rental.car.marka} ${rental.car.model}` : 'Samochód niedostępny'}
                                     </h4>
-                                    <p className="text-xs text-muted">
+                                    <p className="text-sm text-muted">
                                         {formatDate(rental.rental_start)} - {formatDate(rental.rental_end)}
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <span className="text-sm font-medium">{rental.total_price} zł</span>
-                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusBadgeColor(rental.status)}`}>
-                                    {getStatusText(rental.status)}
-                                </span>
+                            <div className="flex items-center gap-2 justify-end min-w-[150px]">
+                                {index === 0 && (
+                                    <span className="px-2.5 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
+                                        Najnowsze
+                                    </span>
+                                )}
+                                <span className="text-base font-medium">{rental.total_price} zł</span>
                             </div>
                         </div>
                     ))}
